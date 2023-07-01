@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-theme-app';
+
+   toppings = new FormControl('');
+
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+ constructor(private themeService: ThemeService) {
+  this.themeService.toggleTheme();
+ }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
 }
